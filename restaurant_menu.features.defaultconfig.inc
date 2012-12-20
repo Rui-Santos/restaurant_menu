@@ -10,11 +10,117 @@
 function restaurant_menu_defaultconfig_features() {
   return array(
     'restaurant_menu' => array(
+      'default_page_manager_pages' => 'default_page_manager_pages',
       'field_default_fields' => 'field_default_fields',
       'strongarm' => 'strongarm',
       'taxonomy_default_vocabularies' => 'taxonomy_default_vocabularies',
+      'views_default_views' => 'views_default_views',
     ),
   );
+}
+
+/**
+ * Implements hook_defaultconfig_default_page_manager_pages().
+ */
+function restaurant_menu_defaultconfig_default_page_manager_pages() {
+  $page = new stdClass();
+  $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
+  $page->api_version = 1;
+  $page->name = 'menus';
+  $page->task = 'page';
+  $page->admin_title = 'Menus';
+  $page->admin_description = 'Page with menus categories';
+  $page->path = 'menus';
+  $page->access = array();
+  $page->menu = array(
+    'type' => 'normal',
+    'title' => 'Menus',
+    'name' => 'main-menu',
+    'weight' => '1',
+    'parent' => array(
+      'type' => 'none',
+      'title' => '',
+      'name' => 'navigation',
+      'weight' => '0',
+    ),
+  );
+  $page->arguments = array();
+  $page->conf = array(
+    'admin_paths' => FALSE,
+  );
+  $page->default_handlers = array();
+  $handler = new stdClass();
+  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
+  $handler->api_version = 1;
+  $handler->name = 'page_menus_panel_context';
+  $handler->task = 'page';
+  $handler->subtask = 'menus';
+  $handler->handler = 'panel_context';
+  $handler->weight = 0;
+  $handler->conf = array(
+    'title' => 'Panel',
+    'no_blocks' => 0,
+    'pipeline' => 'ipe',
+    'body_classes_to_remove' => '',
+    'body_classes_to_add' => 'menus-page',
+    'css_id' => 'menus-page',
+    'css' => '',
+    'contexts' => array(),
+    'relationships' => array(),
+  );
+  $display = new panels_display();
+  $display->layout = 'boxton';
+  $display->layout_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'contentmain' => NULL,
+    ),
+  );
+  $display->cache = array();
+  $display->title = 'Menus';
+  $display->content = array();
+  $display->panels = array();
+    $pane = new stdClass();
+    $pane->pid = 'new-1';
+    $pane->panel = 'contentmain';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'menu_categories-menu_categories';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'view_mode' => 'teaser',
+      'widget_title' => NULL,
+      'items_per_page' => NULL,
+      'exposed' => array(
+        'sort_by' => NULL,
+        'sort_order' => NULL,
+      ),
+      'use_pager' => NULL,
+      'pager_id' => NULL,
+      'offset' => NULL,
+      'link_to_view' => NULL,
+      'more_link' => NULL,
+      'path' => NULL,
+      'view_settings' => 'nodes',
+      'header_type' => 'none',
+    );
+    $pane->cache = array();
+    $pane->style = array();
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $display->content['new-1'] = $pane;
+    $display->panels['contentmain'][0] = 'new-1';
+  $display->hide_title = PANELS_TITLE_FIXED;
+  $display->title_pane = '0';
+  $handler->conf['display'] = $display;
+  $page->default_handlers[$handler->name] = $handler;
+  $pages['menus'] = $page;
+
+  return $pages;
+
 }
 
 /**
@@ -555,6 +661,29 @@ function restaurant_menu_defaultconfig_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'field_bundle_settings_taxonomy_term__menu_categories';
+  $strongarm->value = array(
+    'view_modes' => array(),
+    'extra_fields' => array(
+      'form' => array(
+        'path' => array(
+          'weight' => '3',
+        ),
+        'name' => array(
+          'weight' => '0',
+        ),
+        'description' => array(
+          'weight' => '1',
+        ),
+      ),
+      'display' => array(),
+    ),
+  );
+  $export['field_bundle_settings_taxonomy_term__menu_categories'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_menu';
   $strongarm->value = array();
   $export['menu_options_menu'] = $strongarm;
@@ -658,4 +787,75 @@ function restaurant_menu_defaultconfig_taxonomy_default_vocabularies() {
       'weight' => '0',
     ),
   );
+}
+
+/**
+ * Implements hook_defaultconfig_views_default_views().
+ */
+function restaurant_menu_defaultconfig_views_default_views() {
+  $export = array();
+
+  $view = new view();
+  $view->name = 'menu_categories';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'taxonomy_term_data';
+  $view->human_name = 'Menu Categories';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Field: Taxonomy term: Images */
+  $handler->display->display_options['fields']['field_menu_categories_images']['id'] = 'field_menu_categories_images';
+  $handler->display->display_options['fields']['field_menu_categories_images']['table'] = 'field_data_field_menu_categories_images';
+  $handler->display->display_options['fields']['field_menu_categories_images']['field'] = 'field_menu_categories_images';
+  $handler->display->display_options['fields']['field_menu_categories_images']['label'] = '';
+  $handler->display->display_options['fields']['field_menu_categories_images']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_menu_categories_images']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_menu_categories_images']['settings'] = array(
+    'image_style' => 'panopoly_image_square',
+    'image_link' => 'content',
+  );
+  $handler->display->display_options['fields']['field_menu_categories_images']['delta_limit'] = '1';
+  $handler->display->display_options['fields']['field_menu_categories_images']['delta_offset'] = '0';
+  /* Field: Taxonomy term: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['label'] = '';
+  $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['name']['element_type'] = 'h2';
+  $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['name']['link_to_taxonomy'] = TRUE;
+  /* Sort criterion: Taxonomy term: Weight */
+  $handler->display->display_options['sorts']['weight']['id'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['sorts']['weight']['field'] = 'weight';
+  /* Filter criterion: Taxonomy vocabulary: Machine name */
+  $handler->display->display_options['filters']['machine_name']['id'] = 'machine_name';
+  $handler->display->display_options['filters']['machine_name']['table'] = 'taxonomy_vocabulary';
+  $handler->display->display_options['filters']['machine_name']['field'] = 'machine_name';
+  $handler->display->display_options['filters']['machine_name']['value'] = array(
+    'menu_categories' => 'menu_categories',
+  );
+
+  /* Display: Menu Categories */
+  $handler = $view->new_display('panel_pane', 'Menu Categories', 'menu_categories');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Menus';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $export['menu_categories'] = $view;
+
+  return $export;
 }
