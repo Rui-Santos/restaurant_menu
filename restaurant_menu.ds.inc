@@ -23,7 +23,7 @@ function restaurant_menu_ds_field_settings_info() {
       'format' => 'default',
       'formatter_settings' => array(
         'link' => '1',
-        'wrapper' => 'h4',
+        'wrapper' => 'p',
         'class' => '',
       ),
     ),
@@ -42,8 +42,8 @@ function restaurant_menu_ds_field_settings_info() {
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
-        'link' => '0',
-        'wrapper' => 'h4',
+        'link' => '1',
+        'wrapper' => 'p',
         'class' => '',
       ),
     ),
@@ -65,21 +65,21 @@ function restaurant_menu_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'menu';
   $ds_layout->view_mode = 'default';
-  $ds_layout->layout = 'panels-radix_burr_flipped';
+  $ds_layout->layout = 'panels-radix_burr';
   $ds_layout->settings = array(
     'regions' => array(
       'sidebar' => array(
         0 => 'field_menu_images',
       ),
       'contentmain' => array(
-        1 => 'field_menu_description',
-        2 => 'field_menu_types',
+        1 => 'field_menu_types',
+        2 => 'body',
       ),
     ),
     'fields' => array(
       'field_menu_images' => 'sidebar',
-      'field_menu_description' => 'contentmain',
       'field_menu_types' => 'contentmain',
+      'body' => 'contentmain',
     ),
     'classes' => array(),
     'wrappers' => array(
