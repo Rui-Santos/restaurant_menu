@@ -13,23 +13,9 @@ function restaurant_menu_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'date_popup_authored_enabled_menu';
-  $strongarm->value = 1;
-  $export['date_popup_authored_enabled_menu'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'date_popup_authored_format_menu';
-  $strongarm->value = 'm/d/Y - H:i';
-  $export['date_popup_authored_format_menu'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'date_popup_authored_year_range_menu';
-  $strongarm->value = '3';
-  $export['date_popup_authored_year_range_menu'] = $strongarm;
+  $strongarm->name = 'additional_settings__active_tab_menu';
+  $strongarm->value = 'edit-taxonomy-menu-trails';
+  $export['additional_settings__active_tab_menu'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -180,132 +166,9 @@ function restaurant_menu_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'taxonomy_menu_display_descendants_menu_categories';
-  $strongarm->value = 0;
-  $export['taxonomy_menu_display_descendants_menu_categories'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'taxonomy_menu_display_num_menu_categories';
-  $strongarm->value = 0;
-  $export['taxonomy_menu_display_num_menu_categories'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'taxonomy_menu_end_all_menu_categories';
-  $strongarm->value = FALSE;
-  $export['taxonomy_menu_end_all_menu_categories'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'taxonomy_menu_expanded_menu_categories';
-  $strongarm->value = 1;
-  $export['taxonomy_menu_expanded_menu_categories'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'taxonomy_menu_flat_menu_categories';
-  $strongarm->value = 0;
-  $export['taxonomy_menu_flat_menu_categories'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'taxonomy_menu_hide_empty_terms_menu_categories';
-  $strongarm->value = 0;
-  $export['taxonomy_menu_hide_empty_terms_menu_categories'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'taxonomy_menu_path_menu_categories';
-  $strongarm->value = 'taxonomy_menu_path_default';
-  $export['taxonomy_menu_path_menu_categories'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'taxonomy_menu_rebuild_menu_categories';
-  $strongarm->value = 0;
-  $export['taxonomy_menu_rebuild_menu_categories'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'taxonomy_menu_sync_menu_categories';
-  $strongarm->value = 1;
-  $export['taxonomy_menu_sync_menu_categories'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'taxonomy_menu_term_item_description_menu_categories';
-  $strongarm->value = 0;
-  $export['taxonomy_menu_term_item_description_menu_categories'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'taxonomy_menu_trails_node_menu';
-  $strongarm->value = array(
-    'selection_method' => 'first',
-    'only_without_menu' => 1,
-    'set_breadcrumb' => 'if_empty',
-    'term_path' => 'tm',
-    'term_path_patterns' => array(),
-    'instances' => array(
-      'field_menu_categories' => 'field_menu_categories',
-    ),
-    'paths_ui' => '',
-    'trail_per_menu' => 0,
-  );
-  $export['taxonomy_menu_trails_node_menu'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'taxonomy_menu_trails__path_regexps';
-  $strongarm->value = array();
-  $export['taxonomy_menu_trails__path_regexps'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'taxonomy_menu_vocab_menu_menu_categories';
-  $strongarm->value = 'main-menu';
-  $export['taxonomy_menu_vocab_menu_menu_categories'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'taxonomy_menu_vocab_parent_menu_categories';
-  $strongarm->value = '718';
-  $export['taxonomy_menu_vocab_parent_menu_categories'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'taxonomy_menu_voc_item_description_menu_categories';
-  $strongarm->value = 0;
-  $export['taxonomy_menu_voc_item_description_menu_categories'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'taxonomy_menu_voc_item_menu_categories';
-  $strongarm->value = FALSE;
-  $export['taxonomy_menu_voc_item_menu_categories'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'taxonomy_menu_voc_name_menu_categories';
-  $strongarm->value = FALSE;
-  $export['taxonomy_menu_voc_name_menu_categories'] = $strongarm;
+  $strongarm->name = 'save_continue_menu';
+  $strongarm->value = 'Save and add fields';
+  $export['save_continue_menu'] = $strongarm;
 
   return $export;
 }

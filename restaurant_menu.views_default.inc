@@ -73,6 +73,8 @@ function restaurant_menu_views_default_views() {
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Menus';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['pane_category']['name'] = 'Restaurant Menu';
+  $handler->display->display_options['pane_category']['weight'] = '0';
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 'items_per_page';
   $handler->display->display_options['allow']['offset'] = 0;
@@ -164,7 +166,7 @@ function restaurant_menu_views_default_views() {
   $handler->display->display_options['arguments']['tid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['tid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['tid']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['pane_category']['name'] = 'Restaurant Menus';
+  $handler->display->display_options['pane_category']['name'] = 'Restaurant Menu';
   $handler->display->display_options['pane_category']['weight'] = '0';
 
   /* Display: Featured */
@@ -210,7 +212,7 @@ function restaurant_menu_views_default_views() {
   $handler->display->display_options['filters']['field_menu_featured_value']['value'] = array(
     1 => '1',
   );
-  $handler->display->display_options['pane_category']['name'] = 'Restaurant Menus';
+  $handler->display->display_options['pane_category']['name'] = 'Restaurant Menu';
   $handler->display->display_options['pane_category']['weight'] = '0';
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 'items_per_page';
@@ -251,7 +253,6 @@ function restaurant_menu_views_default_views() {
   $handler->display->display_options['arguments']['tid']['relationship'] = 'term_node_tid';
   $handler->display->display_options['arguments']['tid']['default_action'] = 'default';
   $handler->display->display_options['arguments']['tid']['default_argument_type'] = 'taxonomy_tid';
-  $handler->display->display_options['arguments']['tid']['default_argument_options']['term_page'] = FALSE;
   $handler->display->display_options['arguments']['tid']['default_argument_options']['node'] = TRUE;
   $handler->display->display_options['arguments']['tid']['default_argument_options']['limit'] = TRUE;
   $handler->display->display_options['arguments']['tid']['default_argument_options']['vocabularies'] = array(
@@ -283,7 +284,7 @@ function restaurant_menu_views_default_views() {
   $handler->display->display_options['filters']['field_menu_featured_value']['value'] = array(
     1 => '1',
   );
-  $handler->display->display_options['pane_category']['name'] = 'Restaurant Menus';
+  $handler->display->display_options['pane_category']['name'] = 'Restaurant Menu';
   $handler->display->display_options['pane_category']['weight'] = '0';
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 'items_per_page';
