@@ -594,6 +594,12 @@ function restaurant_menu_field_default_fields() {
           'type' => 'hidden',
           'weight' => '0',
         ),
+        'featured' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
       ),
       'entity_type' => 'taxonomy_term',
       'field_name' => 'field_menu_categories_images',
