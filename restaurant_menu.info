@@ -39,6 +39,7 @@ features[field][] = taxonomy_term-menu_categories-field_menu_categories_images
 features[image][] = menu_categories_thumbnail
 features[image][] = menu_square_thumbnail
 features[image][] = menu_thumbnail
+features[menu_custom][] = menu-restaurant-admin-menu
 features[menu_links][] = menu-restaurant-admin-menu:admin/structure/taxonomy/menu_categories/add
 features[menu_links][] = menu-restaurant-admin-menu:node/add/menu
 features[node][] = menu

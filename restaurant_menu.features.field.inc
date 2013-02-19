@@ -557,7 +557,7 @@ function restaurant_menu_field_default_fields() {
   $fields['taxonomy_term-menu_categories-field_menu_categories_images'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '-1',
+      'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_menu_categories_images',
