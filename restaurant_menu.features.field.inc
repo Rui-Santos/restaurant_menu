@@ -553,14 +553,14 @@ function restaurant_menu_field_default_fields() {
     ),
   );
 
-  // Exported field: 'taxonomy_term-menu_categories-field_menu_categories_images'.
-  $fields['taxonomy_term-menu_categories-field_menu_categories_images'] = array(
+  // Exported field: 'taxonomy_term-menu_categories-field_menu_categories_image'.
+  $fields['taxonomy_term-menu_categories-field_menu_categories_image'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_menu_categories_images',
+      'field_name' => 'field_menu_categories_image',
       'foreign keys' => array(
         'fid' => array(
           'columns' => array(
@@ -590,9 +590,13 @@ function restaurant_menu_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '0',
+          'module' => 'image',
+          'settings' => array(
+            'image_link' => '',
+            'image_style' => '',
+          ),
+          'type' => 'image',
+          'weight' => 0,
         ),
         'featured' => array(
           'label' => 'above',
@@ -602,8 +606,8 @@ function restaurant_menu_field_default_fields() {
         ),
       ),
       'entity_type' => 'taxonomy_term',
-      'field_name' => 'field_menu_categories_images',
-      'label' => 'Images',
+      'field_name' => 'field_menu_categories_image',
+      'label' => 'Image',
       'required' => 0,
       'settings' => array(
         'alt_field' => 0,
@@ -618,28 +622,12 @@ function restaurant_menu_field_default_fields() {
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'media',
+        'module' => 'image',
         'settings' => array(
-          'allowed_schemes' => array(
-            'public' => 'public',
-            'vimeo' => 0,
-            'youtube' => 0,
-          ),
-          'allowed_types' => array(
-            'audio' => 0,
-            'document' => 0,
-            'image' => 'image',
-            'video' => 0,
-          ),
-          'browser_plugins' => array(
-            'media_default--media_browser_1' => 0,
-            'media_default--media_browser_my_files' => 0,
-            'media_internet' => 0,
-            'upload' => 0,
-          ),
+          'preview_image_style' => 'thumbnail',
           'progress_indicator' => 'throbber',
         ),
-        'type' => 'media_generic',
+        'type' => 'image_image',
         'weight' => '2',
       ),
     ),
@@ -651,6 +639,7 @@ function restaurant_menu_field_default_fields() {
   t('Categories');
   t('Description');
   t('Featured');
+  t('Image');
   t('Images');
   t('Price');
   t('Select the categories for this menu.');

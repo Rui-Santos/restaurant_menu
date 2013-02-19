@@ -32,20 +32,13 @@ function restaurant_menu_views_default_views() {
   $handler->display->display_options['style_options']['list']['class'] = 'row';
   $handler->display->display_options['style_options']['row']['class'] = 'views-row span3';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Field: Taxonomy term: Images */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_menu_categories_images']['id'] = 'field_menu_categories_images';
   $handler->display->display_options['fields']['field_menu_categories_images']['table'] = 'field_data_field_menu_categories_images';
   $handler->display->display_options['fields']['field_menu_categories_images']['field'] = 'field_menu_categories_images';
   $handler->display->display_options['fields']['field_menu_categories_images']['label'] = '';
   $handler->display->display_options['fields']['field_menu_categories_images']['element_class'] = 'thumbnail';
   $handler->display->display_options['fields']['field_menu_categories_images']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_menu_categories_images']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_menu_categories_images']['settings'] = array(
-    'image_style' => 'menu_categories_thumbnail',
-    'image_link' => 'content',
-  );
-  $handler->display->display_options['fields']['field_menu_categories_images']['delta_limit'] = '1';
-  $handler->display->display_options['fields']['field_menu_categories_images']['delta_offset'] = '0';
   /* Field: Taxonomy term: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'taxonomy_term_data';
