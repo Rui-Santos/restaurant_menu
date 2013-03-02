@@ -32,32 +32,24 @@ function restaurant_menu_views_default_views() {
   $handler->display->display_options['style_options']['list']['class'] = 'row';
   $handler->display->display_options['style_options']['row']['class'] = 'views-row span3';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_menu_categories_images']['id'] = 'field_menu_categories_images';
-  $handler->display->display_options['fields']['field_menu_categories_images']['table'] = 'field_data_field_menu_categories_images';
-  $handler->display->display_options['fields']['field_menu_categories_images']['field'] = 'field_menu_categories_images';
-  $handler->display->display_options['fields']['field_menu_categories_images']['label'] = '';
-  $handler->display->display_options['fields']['field_menu_categories_images']['element_class'] = 'thumbnail';
-  $handler->display->display_options['fields']['field_menu_categories_images']['element_label_colon'] = FALSE;
+  /* Field: Taxonomy term: Name */
+  $handler->display->display_options['fields']['name_1']['id'] = 'name_1';
+  $handler->display->display_options['fields']['name_1']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['name_1']['field'] = 'name';
+  $handler->display->display_options['fields']['name_1']['label'] = '';
+  $handler->display->display_options['fields']['name_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['name_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['name_1']['convert_spaces'] = TRUE;
   /* Field: Taxonomy term: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'taxonomy_term_data';
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['label'] = '';
+  $handler->display->display_options['fields']['name']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['name']['alter']['text'] = '<a href="/menus#[name_1]">[name]</a>';
   $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
-  $handler->display->display_options['fields']['name']['element_type'] = 'h2';
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['name']['link_to_taxonomy'] = TRUE;
-  /* Field: Taxonomy term: Term description */
-  $handler->display->display_options['fields']['description']['id'] = 'description';
-  $handler->display->display_options['fields']['description']['table'] = 'taxonomy_term_data';
-  $handler->display->display_options['fields']['description']['field'] = 'description';
-  $handler->display->display_options['fields']['description']['label'] = '';
-  $handler->display->display_options['fields']['description']['alter']['max_length'] = '140';
-  $handler->display->display_options['fields']['description']['alter']['trim'] = TRUE;
-  $handler->display->display_options['fields']['description']['element_type'] = 'h3';
-  $handler->display->display_options['fields']['description']['element_label_colon'] = FALSE;
   /* Sort criterion: Taxonomy term: Weight */
   $handler->display->display_options['sorts']['weight']['id'] = 'weight';
   $handler->display->display_options['sorts']['weight']['table'] = 'taxonomy_term_data';
@@ -75,10 +67,86 @@ function restaurant_menu_views_default_views() {
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Menus';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '4';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Taxonomy term: Name */
+  $handler->display->display_options['fields']['name_1']['id'] = 'name_1';
+  $handler->display->display_options['fields']['name_1']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['name_1']['field'] = 'name';
+  $handler->display->display_options['fields']['name_1']['label'] = '';
+  $handler->display->display_options['fields']['name_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['name_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['name_1']['convert_spaces'] = TRUE;
+  /* Field: Taxonomy term: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['label'] = '';
+  $handler->display->display_options['fields']['name']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['name']['alter']['text'] = '<a href="/menus#[name_1]">[name]</a>';
+  $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+  /* Field: Taxonomy term: Image */
+  $handler->display->display_options['fields']['field_menu_categories_image']['id'] = 'field_menu_categories_image';
+  $handler->display->display_options['fields']['field_menu_categories_image']['table'] = 'field_data_field_menu_categories_image';
+  $handler->display->display_options['fields']['field_menu_categories_image']['field'] = 'field_menu_categories_image';
+  $handler->display->display_options['fields']['field_menu_categories_image']['label'] = '';
+  $handler->display->display_options['fields']['field_menu_categories_image']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_menu_categories_image']['alter']['path'] = 'menus#[name_1]';
+  $handler->display->display_options['fields']['field_menu_categories_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_menu_categories_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_menu_categories_image']['settings'] = array(
+    'image_style' => 'menu_categories_thumbnail',
+    'image_link' => '',
+  );
   $handler->display->display_options['pane_category']['name'] = 'Restaurant Menu';
   $handler->display->display_options['pane_category']['weight'] = '0';
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 'items_per_page';
+  $handler->display->display_options['allow']['offset'] = 0;
+  $handler->display->display_options['allow']['link_to_view'] = 0;
+  $handler->display->display_options['allow']['more_link'] = 0;
+  $handler->display->display_options['allow']['path_override'] = 0;
+  $handler->display->display_options['allow']['title_override'] = 'title_override';
+  $handler->display->display_options['allow']['exposed_form'] = 0;
+  $handler->display->display_options['allow']['fields_override'] = 0;
+
+  /* Display: Menu Categories Jump Navigation */
+  $handler = $view->new_display('panel_pane', 'Menu Categories Jump Navigation', 'menu_categories_jump_navigation');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Categories';
+  $handler->display->display_options['display_description'] = 'Jump navigation for the menus page.';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'semanticviews_default';
+  $handler->display->display_options['style_options']['list']['element_type'] = 'ul';
+  $handler->display->display_options['style_options']['list']['class'] = 'nav nav-pills nav-stacked';
+  $handler->display->display_options['style_options']['row']['element_type'] = 'li';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'semanticviews_fields';
+  $handler->display->display_options['row_options']['skip_blank'] = 0;
+  $handler->display->display_options['row_options']['semantic_html'] = array(
+    'name' => array(
+      'element_type' => '',
+      'class' => '',
+    ),
+  );
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['pane_category']['name'] = 'Restaurant Menu';
+  $handler->display->display_options['pane_category']['weight'] = '0';
+  $handler->display->display_options['allow']['use_pager'] = 0;
+  $handler->display->display_options['allow']['items_per_page'] = 0;
   $handler->display->display_options['allow']['offset'] = 0;
   $handler->display->display_options['allow']['link_to_view'] = 0;
   $handler->display->display_options['allow']['more_link'] = 0;
@@ -104,6 +172,7 @@ function restaurant_menu_views_default_views() {
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['style_plugin'] = 'semanticviews_default';
@@ -126,6 +195,38 @@ function restaurant_menu_views_default_views() {
     'menu_categories' => 'menu_categories',
     'panopoly_categories' => 0,
   );
+  /* Field: Taxonomy term: Name */
+  $handler->display->display_options['fields']['name_1']['id'] = 'name_1';
+  $handler->display->display_options['fields']['name_1']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['name_1']['field'] = 'name';
+  $handler->display->display_options['fields']['name_1']['relationship'] = 'term_node_tid';
+  $handler->display->display_options['fields']['name_1']['label'] = '';
+  $handler->display->display_options['fields']['name_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['name_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['name_1']['convert_spaces'] = TRUE;
+  /* Field: Taxonomy term: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'term_node_tid';
+  $handler->display->display_options['fields']['name']['label'] = '';
+  $handler->display->display_options['fields']['name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['name']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['name']['alter']['text'] = '<a name="[name_1]">[name]</a>';
+  $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+  /* Field: Content: Images */
+  $handler->display->display_options['fields']['field_menu_images']['id'] = 'field_menu_images';
+  $handler->display->display_options['fields']['field_menu_images']['table'] = 'field_data_field_menu_images';
+  $handler->display->display_options['fields']['field_menu_images']['field'] = 'field_menu_images';
+  $handler->display->display_options['fields']['field_menu_images']['label'] = '';
+  $handler->display->display_options['fields']['field_menu_images']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_menu_images']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_menu_images']['settings'] = array(
+    'image_style' => 'menu_thumbnail',
+    'image_link' => '',
+  );
+  $handler->display->display_options['fields']['field_menu_images']['delta_limit'] = '1';
+  $handler->display->display_options['fields']['field_menu_images']['delta_offset'] = '0';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -133,6 +234,34 @@ function restaurant_menu_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_type'] = 'h4';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: Content: Body */
+  $handler->display->display_options['fields']['body']['id'] = 'body';
+  $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
+  $handler->display->display_options['fields']['body']['field'] = 'body';
+  $handler->display->display_options['fields']['body']['label'] = '';
+  $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['body']['type'] = 'text_summary_or_trimmed';
+  $handler->display->display_options['fields']['body']['settings'] = array(
+    'trim_length' => '150',
+  );
+  /* Field: Content: Types */
+  $handler->display->display_options['fields']['field_menu_types']['id'] = 'field_menu_types';
+  $handler->display->display_options['fields']['field_menu_types']['table'] = 'field_data_field_menu_types';
+  $handler->display->display_options['fields']['field_menu_types']['field'] = 'field_menu_types';
+  $handler->display->display_options['fields']['field_menu_types']['label'] = '';
+  $handler->display->display_options['fields']['field_menu_types']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_menu_types']['settings'] = array(
+    'edit' => '',
+    'delete' => '',
+    'add' => '',
+    'description' => 0,
+    'view_mode' => 'full',
+  );
+  $handler->display->display_options['fields']['field_menu_types']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_menu_types']['multi_type'] = 'ul';
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
@@ -153,29 +282,32 @@ function restaurant_menu_views_default_views() {
     'menu' => 'menu',
   );
 
-  /* Display: Menus by Category */
-  $handler = $view->new_display('panel_pane', 'Menus by Category', 'menu_by_category');
-  $handler->display->display_options['display_description'] = 'Show a list of menus filtered by current category';
+  /* Display: All Menus */
+  $handler = $view->new_display('panel_pane', 'All Menus', 'all_menus');
+  $handler->display->display_options['display_description'] = 'All menus on one page grouped by category.';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
-  $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Taxonomy term: Term ID */
-  $handler->display->display_options['arguments']['tid']['id'] = 'tid';
-  $handler->display->display_options['arguments']['tid']['table'] = 'taxonomy_term_data';
-  $handler->display->display_options['arguments']['tid']['field'] = 'tid';
-  $handler->display->display_options['arguments']['tid']['relationship'] = 'term_node_tid';
-  $handler->display->display_options['arguments']['tid']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['tid']['default_argument_type'] = 'taxonomy_tid';
-  $handler->display->display_options['arguments']['tid']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['tid']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['tid']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['pane_category']['name'] = 'Restaurant Menu';
-  $handler->display->display_options['pane_category']['weight'] = '0';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_options']['grouping'] = array(
+    0 => array(
+      'field' => 'name',
+      'rendered' => 1,
+      'rendered_strip' => 0,
+    ),
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
 
-  /* Display: Featured */
-  $handler = $view->new_display('panel_pane', 'Featured', 'featured_menus');
+  /* Display: Featured Menus */
+  $handler = $view->new_display('panel_pane', 'Featured Menus', 'featured_menus');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Featured Menus';
-  $handler->display->display_options['display_description'] = 'Featured menus';
+  $handler->display->display_options['display_description'] = 'A list of featured menus.';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['link_display'] = FALSE;
   $handler->display->display_options['link_display'] = 'custom_url';
@@ -185,12 +317,36 @@ function restaurant_menu_views_default_views() {
   $handler->display->display_options['pager']['options']['items_per_page'] = '3';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'semanticviews_default';
+  $handler->display->display_options['style_plugin'] = 'list';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['row_plugin'] = 'node';
-  $handler->display->display_options['row_options']['links'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Images */
+  $handler->display->display_options['fields']['field_menu_images']['id'] = 'field_menu_images';
+  $handler->display->display_options['fields']['field_menu_images']['table'] = 'field_data_field_menu_images';
+  $handler->display->display_options['fields']['field_menu_images']['field'] = 'field_menu_images';
+  $handler->display->display_options['fields']['field_menu_images']['label'] = '';
+  $handler->display->display_options['fields']['field_menu_images']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_menu_images']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_menu_images']['settings'] = array(
+    'image_style' => 'menu_square_thumbnail',
+    'image_link' => '',
+  );
+  $handler->display->display_options['fields']['field_menu_images']['delta_limit'] = '1';
+  $handler->display->display_options['fields']['field_menu_images']['delta_offset'] = '0';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_type'] = 'h4';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -227,36 +383,163 @@ function restaurant_menu_views_default_views() {
   $handler->display->display_options['allow']['fields_override'] = 0;
   $handler->display->display_options['link_to_view'] = '0';
 
-  /* Display: Featured by Category */
-  $handler = $view->new_display('panel_pane', 'Featured by Category', 'featured_menus_by_category');
+  /* Display: Menus by Category */
+  $handler = $view->new_display('panel_pane', 'Menus by Category', 'menus_by_category');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Featured Menus';
-  $handler->display->display_options['display_description'] = 'Featured menus filtered by category';
+  $handler->display->display_options['title'] = 'Menus';
+  $handler->display->display_options['display_description'] = 'Menus filtered by category.';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
-  $handler->display->display_options['defaults']['link_display'] = FALSE;
-  $handler->display->display_options['link_display'] = 'custom_url';
-  $handler->display->display_options['link_url'] = 'menus';
   $handler->display->display_options['defaults']['pager'] = FALSE;
-  $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '3';
+  $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'semanticviews_default';
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_options']['grouping'] = array(
+    0 => array(
+      'field' => 'name',
+      'rendered' => 1,
+      'rendered_strip' => 0,
+    ),
+  );
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['row_plugin'] = 'node';
-  $handler->display->display_options['row_options']['links'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Images */
+  $handler->display->display_options['fields']['field_menu_images']['id'] = 'field_menu_images';
+  $handler->display->display_options['fields']['field_menu_images']['table'] = 'field_data_field_menu_images';
+  $handler->display->display_options['fields']['field_menu_images']['field'] = 'field_menu_images';
+  $handler->display->display_options['fields']['field_menu_images']['label'] = '';
+  $handler->display->display_options['fields']['field_menu_images']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_menu_images']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_menu_images']['settings'] = array(
+    'image_style' => 'menu_thumbnail',
+    'image_link' => 'content',
+  );
+  $handler->display->display_options['fields']['field_menu_images']['delta_limit'] = '1';
+  $handler->display->display_options['fields']['field_menu_images']['delta_offset'] = '0';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Body */
+  $handler->display->display_options['fields']['body']['id'] = 'body';
+  $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
+  $handler->display->display_options['fields']['body']['field'] = 'body';
+  $handler->display->display_options['fields']['body']['label'] = '';
+  $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['body']['type'] = 'text_summary_or_trimmed';
+  $handler->display->display_options['fields']['body']['settings'] = array(
+    'trim_length' => '150',
+  );
+  /* Field: Content: Types */
+  $handler->display->display_options['fields']['field_menu_types']['id'] = 'field_menu_types';
+  $handler->display->display_options['fields']['field_menu_types']['table'] = 'field_data_field_menu_types';
+  $handler->display->display_options['fields']['field_menu_types']['field'] = 'field_menu_types';
+  $handler->display->display_options['fields']['field_menu_types']['label'] = '';
+  $handler->display->display_options['fields']['field_menu_types']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_menu_types']['settings'] = array(
+    'edit' => '',
+    'delete' => '',
+    'add' => '',
+    'description' => 0,
+    'view_mode' => 'full',
+  );
+  $handler->display->display_options['fields']['field_menu_types']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_menu_types']['multi_type'] = 'ul';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Taxonomy term: Term ID */
+  /* Contextual filter: Content: Has taxonomy term ID */
   $handler->display->display_options['arguments']['tid']['id'] = 'tid';
-  $handler->display->display_options['arguments']['tid']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['arguments']['tid']['table'] = 'taxonomy_index';
   $handler->display->display_options['arguments']['tid']['field'] = 'tid';
-  $handler->display->display_options['arguments']['tid']['relationship'] = 'term_node_tid';
   $handler->display->display_options['arguments']['tid']['default_action'] = 'default';
   $handler->display->display_options['arguments']['tid']['default_argument_type'] = 'taxonomy_tid';
+  $handler->display->display_options['arguments']['tid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['tid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['tid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['allow']['use_pager'] = 0;
+  $handler->display->display_options['allow']['items_per_page'] = 0;
+  $handler->display->display_options['allow']['offset'] = 0;
+  $handler->display->display_options['allow']['link_to_view'] = 0;
+  $handler->display->display_options['allow']['more_link'] = 0;
+  $handler->display->display_options['allow']['path_override'] = 0;
+  $handler->display->display_options['allow']['title_override'] = 'title_override';
+  $handler->display->display_options['allow']['exposed_form'] = 0;
+  $handler->display->display_options['allow']['fields_override'] = 0;
+
+  /* Display: Featured Menus by Category */
+  $handler = $view->new_display('panel_pane', 'Featured Menus by Category', 'featured_menus_category');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Featured Menus';
+  $handler->display->display_options['display_description'] = 'Featured menus filtered by category.';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_options']['grouping'] = array(
+    0 => array(
+      'field' => 'name',
+      'rendered' => 1,
+      'rendered_strip' => 0,
+    ),
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Images */
+  $handler->display->display_options['fields']['field_menu_images']['id'] = 'field_menu_images';
+  $handler->display->display_options['fields']['field_menu_images']['table'] = 'field_data_field_menu_images';
+  $handler->display->display_options['fields']['field_menu_images']['field'] = 'field_menu_images';
+  $handler->display->display_options['fields']['field_menu_images']['label'] = '';
+  $handler->display->display_options['fields']['field_menu_images']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_menu_images']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_menu_images']['settings'] = array(
+    'image_style' => 'menu_thumbnail',
+    'image_link' => 'content',
+  );
+  $handler->display->display_options['fields']['field_menu_images']['delta_limit'] = '1';
+  $handler->display->display_options['fields']['field_menu_images']['delta_offset'] = '0';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Types */
+  $handler->display->display_options['fields']['field_menu_types']['id'] = 'field_menu_types';
+  $handler->display->display_options['fields']['field_menu_types']['table'] = 'field_data_field_menu_types';
+  $handler->display->display_options['fields']['field_menu_types']['field'] = 'field_menu_types';
+  $handler->display->display_options['fields']['field_menu_types']['label'] = '';
+  $handler->display->display_options['fields']['field_menu_types']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_menu_types']['settings'] = array(
+    'edit' => '',
+    'delete' => '',
+    'add' => '',
+    'description' => 0,
+    'view_mode' => 'full',
+  );
+  $handler->display->display_options['fields']['field_menu_types']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_menu_types']['multi_type'] = 'ul';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Has taxonomy term ID */
+  $handler->display->display_options['arguments']['tid']['id'] = 'tid';
+  $handler->display->display_options['arguments']['tid']['table'] = 'taxonomy_index';
+  $handler->display->display_options['arguments']['tid']['field'] = 'tid';
+  $handler->display->display_options['arguments']['tid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['tid']['title_enable'] = TRUE;
+  $handler->display->display_options['arguments']['tid']['title'] = 'Featured Menus in %1';
+  $handler->display->display_options['arguments']['tid']['default_argument_type'] = 'taxonomy_tid';
   $handler->display->display_options['arguments']['tid']['default_argument_options']['node'] = TRUE;
-  $handler->display->display_options['arguments']['tid']['default_argument_options']['limit'] = TRUE;
+  $handler->display->display_options['arguments']['tid']['default_argument_options']['anyall'] = '+';
   $handler->display->display_options['arguments']['tid']['default_argument_options']['vocabularies'] = array(
     'menu_categories' => 'menu_categories',
   );
@@ -286,10 +569,8 @@ function restaurant_menu_views_default_views() {
   $handler->display->display_options['filters']['field_menu_featured_value']['value'] = array(
     1 => '1',
   );
-  $handler->display->display_options['pane_category']['name'] = 'Restaurant Menu';
-  $handler->display->display_options['pane_category']['weight'] = '0';
   $handler->display->display_options['allow']['use_pager'] = 0;
-  $handler->display->display_options['allow']['items_per_page'] = 'items_per_page';
+  $handler->display->display_options['allow']['items_per_page'] = 0;
   $handler->display->display_options['allow']['offset'] = 0;
   $handler->display->display_options['allow']['link_to_view'] = 0;
   $handler->display->display_options['allow']['more_link'] = 0;
@@ -297,17 +578,6 @@ function restaurant_menu_views_default_views() {
   $handler->display->display_options['allow']['title_override'] = 'title_override';
   $handler->display->display_options['allow']['exposed_form'] = 0;
   $handler->display->display_options['allow']['fields_override'] = 0;
-  $handler->display->display_options['argument_input'] = array(
-    'tid' => array(
-      'type' => 'none',
-      'context' => 'terms.tid',
-      'context_optional' => 0,
-      'panel' => '0',
-      'fixed' => '',
-      'label' => 'Taxonomy term: Term ID',
-    ),
-  );
-  $handler->display->display_options['link_to_view'] = '0';
   $export['menus'] = $view;
 
   return $export;

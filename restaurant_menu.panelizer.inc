@@ -39,7 +39,7 @@ function restaurant_menu_panelizer_defaults() {
   $panelizer->link_to_entity = TRUE;
   $panelizer->extra = array();
   $display = new panels_display();
-  $display->layout = 'radix_taylor_flipped_sidebar';
+  $display->layout = 'radix_burr_flipped';
   $display->layout_settings = array();
   $display->panel_settings = array(
     'style_settings' => array(
@@ -50,6 +50,7 @@ function restaurant_menu_panelizer_defaults() {
       'half' => NULL,
       'sidebar' => NULL,
       'footer' => NULL,
+      'contentmain' => NULL,
     ),
   );
   $display->cache = array();
@@ -58,19 +59,37 @@ function restaurant_menu_panelizer_defaults() {
   $display->panels = array();
     $pane = new stdClass();
     $pane->pid = 'new-1';
-    $pane->panel = 'half';
+    $pane->panel = 'contentmain';
     $pane->type = 'entity_field';
-    $pane->subtype = 'node:body';
+    $pane->subtype = 'node:field_menu_images';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
       'label' => 'hidden',
-      'formatter' => 'text_default',
-      'delta_limit' => 0,
+      'formatter' => 'image',
+      'delta_limit' => '0',
       'delta_offset' => '0',
-      'delta_reversed' => FALSE,
-      'formatter_settings' => array(),
+      'delta_reversed' => 0,
+      'formatter_settings' => array(
+        'image_link' => '',
+        'image_style' => 'menu_thumbnail',
+      ),
       'context' => 'panelizer',
+      'override_title' => 0,
+      'override_title_text' => '',
+      'view_mode' => NULL,
+      'widget_title' => NULL,
+      'items_per_page' => NULL,
+      'exposed' => array(
+        'sort_by' => NULL,
+        'sort_order' => NULL,
+      ),
+      'use_pager' => NULL,
+      'pager_id' => NULL,
+      'offset' => NULL,
+      'link_to_view' => NULL,
+      'more_link' => NULL,
+      'path' => NULL,
     );
     $pane->cache = array();
     $pane->style = array(
@@ -81,39 +100,10 @@ function restaurant_menu_panelizer_defaults() {
     $pane->position = 0;
     $pane->locks = array();
     $display->content['new-1'] = $pane;
-    $display->panels['half'][0] = 'new-1';
+    $display->panels['contentmain'][0] = 'new-1';
     $pane = new stdClass();
     $pane->pid = 'new-2';
-    $pane->panel = 'quarter1';
-    $pane->type = 'entity_field';
-    $pane->subtype = 'node:field_menu_images';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'label' => 'hidden',
-      'formatter' => 'image',
-      'delta_limit' => 0,
-      'delta_offset' => '0',
-      'delta_reversed' => FALSE,
-      'formatter_settings' => array(
-        'image_link' => '',
-        'image_style' => '',
-      ),
-      'context' => 'panelizer',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 0;
-    $pane->locks = array();
-    $display->content['new-2'] = $pane;
-    $display->panels['quarter1'][0] = 'new-2';
-    $pane = new stdClass();
-    $pane->pid = 'new-3';
-    $pane->panel = 'quarter2';
+    $pane->panel = 'contentmain';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:field_menu_types';
     $pane->shown = TRUE;
@@ -139,23 +129,49 @@ function restaurant_menu_panelizer_defaults() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 0;
+    $pane->position = 1;
+    $pane->locks = array();
+    $display->content['new-2'] = $pane;
+    $display->panels['contentmain'][1] = 'new-2';
+    $pane = new stdClass();
+    $pane->pid = 'new-3';
+    $pane->panel = 'contentmain';
+    $pane->type = 'entity_field';
+    $pane->subtype = 'node:body';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'label' => 'hidden',
+      'formatter' => 'text_default',
+      'delta_limit' => 0,
+      'delta_offset' => '0',
+      'delta_reversed' => FALSE,
+      'formatter_settings' => array(),
+      'context' => 'panelizer',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 2;
     $pane->locks = array();
     $display->content['new-3'] = $pane;
-    $display->panels['quarter2'][0] = 'new-3';
+    $display->panels['contentmain'][2] = 'new-3';
     $pane = new stdClass();
     $pane->pid = 'new-4';
     $pane->panel = 'sidebar';
     $pane->type = 'views_panes';
-    $pane->subtype = 'menus-featured_menus_by_category';
+    $pane->subtype = 'menus-featured_menus_category';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'items_per_page' => '3',
       'override_title' => '',
       'override_title_text' => '',
-      'view_mode' => 'featured',
-      'widget_title' => 'Featured Menus in %taxonomy_term:name',
+      'view_mode' => 'teaser',
+      'widget_title' => 'Featured Menus',
+      'items_per_page' => NULL,
       'exposed' => array(
         'sort_by' => NULL,
         'sort_order' => NULL,
@@ -166,7 +182,7 @@ function restaurant_menu_panelizer_defaults() {
       'link_to_view' => NULL,
       'more_link' => NULL,
       'path' => NULL,
-      'view_settings' => 'nodes',
+      'view_settings' => 'fields',
       'header_type' => 'none',
     );
     $pane->cache = array();
@@ -180,7 +196,7 @@ function restaurant_menu_panelizer_defaults() {
     $display->content['new-4'] = $pane;
     $display->panels['sidebar'][0] = 'new-4';
   $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = 'new-2';
+  $display->title_pane = 'new-1';
   $panelizer->display = $display;
   $export['node:menu:default'] = $panelizer;
 
@@ -681,6 +697,50 @@ function restaurant_menu_panelizer_defaults() {
     $pane = new stdClass();
     $pane->pid = 'new-17';
     $pane->panel = 'contentmain';
+    $pane->type = 'entity_field';
+    $pane->subtype = 'taxonomy_term:field_menu_categories_image';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'label' => 'hidden',
+      'formatter' => 'image',
+      'delta_limit' => 0,
+      'delta_offset' => '0',
+      'delta_reversed' => FALSE,
+      'formatter_settings' => array(
+        'image_style' => 'menu_categories_thumbnail',
+        'image_link' => '',
+      ),
+      'context' => array(),
+      'override_title' => 1,
+      'override_title_text' => '',
+      'view_mode' => NULL,
+      'widget_title' => NULL,
+      'items_per_page' => NULL,
+      'exposed' => array(
+        'sort_by' => NULL,
+        'sort_order' => NULL,
+      ),
+      'use_pager' => NULL,
+      'pager_id' => NULL,
+      'offset' => NULL,
+      'link_to_view' => NULL,
+      'more_link' => NULL,
+      'path' => NULL,
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $display->content['new-17'] = $pane;
+    $display->panels['contentmain'][0] = 'new-17';
+    $pane = new stdClass();
+    $pane->pid = 'new-18';
+    $pane->panel = 'contentmain';
     $pane->type = 'term_description';
     $pane->subtype = 'term_description';
     $pane->shown = TRUE;
@@ -696,15 +756,15 @@ function restaurant_menu_panelizer_defaults() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 0;
+    $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-17'] = $pane;
-    $display->panels['contentmain'][0] = 'new-17';
+    $display->content['new-18'] = $pane;
+    $display->panels['contentmain'][1] = 'new-18';
     $pane = new stdClass();
-    $pane->pid = 'new-18';
+    $pane->pid = 'new-19';
     $pane->panel = 'contentmain';
     $pane->type = 'views_panes';
-    $pane->subtype = 'menus-menu_by_category';
+    $pane->subtype = 'menus-menus_by_category';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
@@ -721,7 +781,7 @@ function restaurant_menu_panelizer_defaults() {
       'link_to_view' => NULL,
       'more_link' => NULL,
       'path' => NULL,
-      'view_settings' => 'nodes',
+      'view_settings' => 'fields',
       'header_type' => 'none',
     );
     $pane->cache = array();
@@ -730,23 +790,23 @@ function restaurant_menu_panelizer_defaults() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 1;
+    $pane->position = 2;
     $pane->locks = array();
-    $display->content['new-18'] = $pane;
-    $display->panels['contentmain'][1] = 'new-18';
+    $display->content['new-19'] = $pane;
+    $display->panels['contentmain'][2] = 'new-19';
     $pane = new stdClass();
-    $pane->pid = 'new-19';
+    $pane->pid = 'new-20';
     $pane->panel = 'sidebar';
     $pane->type = 'views_panes';
-    $pane->subtype = 'menus-featured_menus_by_category';
+    $pane->subtype = 'menus-featured_menus_category';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'items_per_page' => '3',
       'override_title' => '',
       'override_title_text' => '',
-      'view_mode' => 'featured',
-      'widget_title' => 'Featured Menus in %taxonomy_term:name',
+      'view_mode' => 'teaser',
+      'widget_title' => 'Featured Menus',
+      'items_per_page' => NULL,
       'exposed' => array(
         'sort_by' => NULL,
         'sort_order' => NULL,
@@ -757,7 +817,7 @@ function restaurant_menu_panelizer_defaults() {
       'link_to_view' => NULL,
       'more_link' => NULL,
       'path' => NULL,
-      'view_settings' => 'nodes',
+      'view_settings' => 'fields',
       'header_type' => 'none',
     );
     $pane->cache = array();
@@ -768,8 +828,8 @@ function restaurant_menu_panelizer_defaults() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-19'] = $pane;
-    $display->panels['sidebar'][0] = 'new-19';
+    $display->content['new-20'] = $pane;
+    $display->panels['sidebar'][0] = 'new-20';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $panelizer->display = $display;

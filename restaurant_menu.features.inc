@@ -97,8 +97,8 @@ function restaurant_menu_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => '300',
-          'height' => '300',
+          'width' => '120',
+          'height' => '120',
         ),
         'weight' => '1',
       ),
