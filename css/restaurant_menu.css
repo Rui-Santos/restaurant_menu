@@ -1,0 +1,12 @@
+/**
+ * @file
+ * CSS for restaurant menu module
+ */
+
+.view-display-id-admin_menus .views-field-title a {
+  display: block;
+}
+
+.view-display-id-admin_menus .field-collection-item-field-menu-types {
+  display: inline-block;
+}
