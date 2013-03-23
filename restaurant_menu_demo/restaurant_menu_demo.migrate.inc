@@ -46,6 +46,8 @@ class RestaurantMenuMigrateMenuMigration extends Migration {
     $this->addFieldMapping('title', 'title');
     $this->addFieldMapping('body', 'body');
 
+    $this->addFieldMapping('field_menu_featured', 'featured');
+
     $this->addFieldMapping('field_menu_categories', 'categories')->separator(', ');
     $this->addFieldMapping('field_menu_categories:create_term')
       ->defaultValue(TRUE);
@@ -65,6 +67,7 @@ class RestaurantMenuMigrateMenuMigration extends Migration {
     $columns[1] = array('body', 'Body');
     $columns[2] = array('categories', 'Categories');
     $columns[3] = array('images', 'Images');
+    $columns[4] = array('featured', 'Featured');
     return $columns;
   }
 }
