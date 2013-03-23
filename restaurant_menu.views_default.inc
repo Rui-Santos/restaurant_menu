@@ -225,7 +225,7 @@ function restaurant_menu_views_default_views() {
   $handler->display->display_options['path'] = 'admin/content/menu';
   $handler->display->display_options['menu']['type'] = 'tab';
   $handler->display->display_options['menu']['title'] = 'Menus';
-  $handler->display->display_options['menu']['weight'] = '-5';
+  $handler->display->display_options['menu']['weight'] = '-10';
   $handler->display->display_options['menu']['name'] = 'management';
   $handler->display->display_options['menu']['context'] = 0;
   $export['administration_menus'] = $view;
