@@ -13,9 +13,9 @@ function restaurant_menu_taxonomy_default_vocabularies() {
       'name' => 'Menu Categories',
       'machine_name' => 'menu_categories',
       'description' => 'Use this taxonomy to organize menus',
-      'hierarchy' => '0',
+      'hierarchy' => 0,
       'module' => 'taxonomy',
-      'weight' => '0',
+      'weight' => 0,
     ),
   );
 }

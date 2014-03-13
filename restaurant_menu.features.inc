@@ -7,20 +7,16 @@
 /**
  * Implements hook_ctools_plugin_api().
  */
-function restaurant_menu_ctools_plugin_api() {
-  list($module, $api) = func_get_args();
+function restaurant_menu_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "ds" && $api == "ds") {
     return array("version" => "1");
   }
-  list($module, $api) = func_get_args();
   if ($module == "page_manager" && $api == "pages_default") {
     return array("version" => "1");
   }
-  list($module, $api) = func_get_args();
   if ($module == "panelizer" && $api == "panelizer") {
     return array("version" => "1");
   }
-  list($module, $api) = func_get_args();
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
   }
@@ -29,7 +25,7 @@ function restaurant_menu_ctools_plugin_api() {
 /**
  * Implements hook_views_api().
  */
-function restaurant_menu_views_api() {
+function restaurant_menu_views_api($module = NULL, $api = NULL) {
   return array("api" => "3.0");
 }
 
@@ -53,12 +49,13 @@ function restaurant_menu_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => '320',
-          'height' => '320',
+          'width' => 320,
+          'height' => 320,
         ),
-        'weight' => '1',
+        'weight' => 1,
       ),
     ),
+    'label' => 'menu_categories_thumbnail',
   );
 
   // Exported image style: menu_square_thumbnail.
@@ -75,12 +72,13 @@ function restaurant_menu_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => '100',
-          'height' => '100',
+          'width' => 100,
+          'height' => 100,
         ),
-        'weight' => '1',
+        'weight' => 1,
       ),
     ),
+    'label' => 'menu_square_thumbnail',
   );
 
   // Exported image style: menu_thumbnail.
@@ -97,12 +95,13 @@ function restaurant_menu_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => '120',
-          'height' => '120',
+          'width' => 120,
+          'height' => 120,
         ),
-        'weight' => '1',
+        'weight' => 1,
       ),
     ),
+    'label' => 'menu_thumbnail',
   );
 
   return $styles;
