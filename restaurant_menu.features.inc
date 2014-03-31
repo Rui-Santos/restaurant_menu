@@ -84,6 +84,7 @@ function restaurant_menu_image_default_styles() {
   // Exported image style: menu_thumbnail.
   $styles['menu_thumbnail'] = array(
     'name' => 'menu_thumbnail',
+    'label' => 'menu_thumbnail',
     'effects' => array(
       2 => array(
         'label' => 'Scale and crop',
@@ -95,13 +96,12 @@ function restaurant_menu_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => 120,
-          'height' => 120,
+          'width' => 350,
+          'height' => 240,
         ),
         'weight' => 1,
       ),
     ),
-    'label' => 'menu_thumbnail',
   );
 
   return $styles;
