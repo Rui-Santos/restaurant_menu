@@ -508,7 +508,7 @@ function restaurant_menu_views_default_views() {
     0 => array(
       'field' => 'name',
       'rendered' => 1,
-      'rendered_strip' => 1,
+      'rendered_strip' => 0,
     ),
     1 => array(
       'field' => 'description',
