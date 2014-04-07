@@ -57,7 +57,7 @@ function restaurant_menu_default_page_manager_pages() {
     'relationships' => array(),
   );
   $display = new panels_display();
-  $display->layout = 'layout_1col';
+  $display->layout = 'layout_2col';
   $display->layout_settings = array();
   $display->panel_settings = array(
     'style_settings' => array(
@@ -79,7 +79,7 @@ function restaurant_menu_default_page_manager_pages() {
   $display->panels = array();
     $pane = new stdClass();
     $pane->pid = 'new-1';
-    $pane->panel = 'contentmain1';
+    $pane->panel = 'contentmain2_left';
     $pane->type = 'views_panes';
     $pane->subtype = 'menu_categories-menu_categories_jump_navigation';
     $pane->shown = TRUE;
@@ -99,10 +99,28 @@ function restaurant_menu_default_page_manager_pages() {
     $pane->position = 0;
     $pane->locks = array();
     $display->content['new-1'] = $pane;
-    $display->panels['contentmain1'][0] = 'new-1';
+    $display->panels['contentmain2_left'][0] = 'new-1';
     $pane = new stdClass();
     $pane->pid = 'new-2';
-    $pane->panel = 'contentmain1';
+    $pane->panel = 'contentmain2_right';
+    $pane->type = 'fieldable_panels_pane';
+    $pane->subtype = 'fpid:24';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'view_mode' => 'Full',
+    );
+    $pane->cache = array();
+    $pane->style = array();
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $display->content['new-2'] = $pane;
+    $display->panels['contentmain2_right'][0] = 'new-2';
+    $pane = new stdClass();
+    $pane->pid = 'new-3';
+    $pane->panel = 'contentmain2_right';
     $pane->type = 'views_panes';
     $pane->subtype = 'menus-all_menus';
     $pane->shown = TRUE;
@@ -120,28 +138,8 @@ function restaurant_menu_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-2'] = $pane;
-    $display->panels['contentmain1'][1] = 'new-2';
-    $pane = new stdClass();
-    $pane->pid = 'new-3';
-    $pane->panel = 'header';
-    $pane->type = 'fieldable_panels_pane';
-    $pane->subtype = 'fpid:4';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'view_mode' => 'Full',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 0;
-    $pane->locks = array();
     $display->content['new-3'] = $pane;
-    $display->panels['header'][0] = 'new-3';
+    $display->panels['contentmain2_right'][1] = 'new-3';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

@@ -177,7 +177,7 @@ function restaurant_menu_strongarm() {
       ),
       'default' => array(
         'status' => 1,
-        'default' => 1,
+        'default' => 0,
         'choice' => 0,
       ),
       'teaser' => array(

@@ -252,21 +252,34 @@ function restaurant_menu_views_default_views() {
   $handler->display->display_options['style_options']['list']['class'] = 'row';
   $handler->display->display_options['style_options']['row']['class'] = 'views-row span3';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Field: Taxonomy term: Name */
+  /* Field: Anchor name */
   $handler->display->display_options['fields']['name_1']['id'] = 'name_1';
   $handler->display->display_options['fields']['name_1']['table'] = 'taxonomy_term_data';
   $handler->display->display_options['fields']['name_1']['field'] = 'name';
+  $handler->display->display_options['fields']['name_1']['ui_name'] = 'Anchor name';
   $handler->display->display_options['fields']['name_1']['label'] = '';
   $handler->display->display_options['fields']['name_1']['exclude'] = TRUE;
   $handler->display->display_options['fields']['name_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['name_1']['convert_spaces'] = TRUE;
+  /* Field: Taxonomy term: Term description */
+  $handler->display->display_options['fields']['description']['id'] = 'description';
+  $handler->display->display_options['fields']['description']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['description']['field'] = 'description';
+  $handler->display->display_options['fields']['description']['label'] = '';
+  $handler->display->display_options['fields']['description']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['description']['element_type'] = 'p';
+  $handler->display->display_options['fields']['description']['element_class'] = 'list-group-item-text';
+  $handler->display->display_options['fields']['description']['element_label_colon'] = FALSE;
   /* Field: Taxonomy term: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'taxonomy_term_data';
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['label'] = '';
   $handler->display->display_options['fields']['name']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['name']['alter']['text'] = '<a href="/menus#[name_1]" class="btn btn-lg btn-outline">[name]</a>';
+  $handler->display->display_options['fields']['name']['alter']['text'] = '<a href="/menus#[name_1]" class="list-group-item">
+<h4 class="list-group-item-heading">[name]</h4>
+[description]
+</a>';
   $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
@@ -351,8 +364,8 @@ function restaurant_menu_views_default_views() {
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'semanticviews_default';
   $handler->display->display_options['style_options']['list']['element_type'] = 'ul';
-  $handler->display->display_options['style_options']['list']['class'] = 'nav nav-pills';
-  $handler->display->display_options['style_options']['row']['element_type'] = 'li';
+  $handler->display->display_options['style_options']['list']['class'] = 'list-group';
+  $handler->display->display_options['style_options']['row']['element_type'] = '';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'semanticviews_fields';
@@ -447,7 +460,7 @@ function restaurant_menu_views_default_views() {
   $handler->display->display_options['fields']['name_1']['relationship'] = 'term_node_tid';
   $handler->display->display_options['fields']['name_1']['label'] = '';
   $handler->display->display_options['fields']['name_1']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['name_1']['element_type'] = 'h3';
+  $handler->display->display_options['fields']['name_1']['element_type'] = 'h2';
   $handler->display->display_options['fields']['name_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['name_1']['convert_spaces'] = TRUE;
   /* Field: Taxonomy term: Name */
@@ -495,7 +508,7 @@ function restaurant_menu_views_default_views() {
     0 => array(
       'field' => 'name',
       'rendered' => 1,
-      'rendered_strip' => 0,
+      'rendered_strip' => 1,
     ),
     1 => array(
       'field' => 'description',
@@ -503,7 +516,7 @@ function restaurant_menu_views_default_views() {
       'rendered_strip' => 1,
     ),
   );
-  $handler->display->display_options['style_options']['row_class'] = 'col-md-4 col-eh';
+  $handler->display->display_options['style_options']['row_class'] = 'col-md-6 col-eh';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
@@ -545,7 +558,7 @@ function restaurant_menu_views_default_views() {
   $handler->display->display_options['footer']['area']['id'] = 'area';
   $handler->display->display_options['footer']['area']['table'] = 'views';
   $handler->display->display_options['footer']['area']['field'] = 'area';
-  $handler->display->display_options['footer']['area']['content'] = '<a href="/menus" class="btn btn-lg btn-outline">All Menus</a>';
+  $handler->display->display_options['footer']['area']['content'] = '<a href="/menus" class="btn btn-lg btn-success">All Menus</a>';
   $handler->display->display_options['footer']['area']['format'] = 'panopoly_wysiwyg_text';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Content: Taxonomy terms on node */
