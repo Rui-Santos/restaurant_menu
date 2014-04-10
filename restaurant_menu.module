@@ -5,3 +5,14 @@
  */
 
 include_once 'restaurant_menu.features.inc';
+
+/**
+ * Implements hook_preprocess().
+ */
+function restaurant_menu_preprocess_views_view_table(&$variables) {
+  $view = $variables['view'];
+  if ($view->name == 'administration_menus') {
+    // Add css.
+    drupal_add_css(drupal_get_path('module', 'restaurant_menu') . '/css/restaurant_menu.css');
+  }
+}
