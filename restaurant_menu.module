@@ -21,6 +21,18 @@ function restaurant_menu_menu() {
 }
 
 /**
+ * Implements hook_permission().
+ */
+function restaurant_menu_permission() {
+  return array(
+    'administer menus' => array(
+      'title' => t('Administer Menus'),
+      'description' => t('Access the menu admininstration pages and manage menus.'),
+    ),
+  );
+}
+
+/**
  * Implements hook_preprocess().
  */
 function restaurant_menu_preprocess_views_view_table(&$variables) {
