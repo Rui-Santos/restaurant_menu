@@ -9,5 +9,6 @@
  * Page callback for admin/menus/add.
  */
 function restaurant_menu_add_menu_admin() {
-  return 'hola';
+  // Return content for node/add/menu path.
+  return menu_execute_active_handler('node/add/menu');
 }
