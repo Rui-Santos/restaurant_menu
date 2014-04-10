@@ -10,6 +10,39 @@
 function restaurant_menu_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'comment-comment_node_menu-comment_body'
+  $field_instances['comment-comment_node_menu-comment_body'] = array(
+    'bundle' => 'comment_node_menu',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'comment',
+    'field_name' => 'comment_body',
+    'label' => 'Comment',
+    'required' => TRUE,
+    'settings' => array(
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 0,
+    ),
+  );
+
   // Exported field_instance: 'field_collection_item-field_menu_types-field_menu_price'
   $field_instances['field_collection_item-field_menu_types-field_menu_price'] = array(
     'bundle' => 'field_menu_types',
@@ -423,6 +456,7 @@ function restaurant_menu_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('A menu can have different types. Eg. a regular and large type at different prices.');
   t('Categories');
+  t('Comment');
   t('Description');
   t('Featured');
   t('Image');

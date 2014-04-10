@@ -58,6 +58,13 @@ function restaurant_menu_image_default_styles() {
     'label' => 'menu_categories_thumbnail',
   );
 
+  // Exported image style: menu_large.
+  $styles['menu_large'] = array(
+    'name' => 'menu_large',
+    'label' => 'Menu large',
+    'effects' => array(),
+  );
+
   // Exported image style: menu_square_thumbnail.
   $styles['menu_square_thumbnail'] = array(
     'name' => 'menu_square_thumbnail',

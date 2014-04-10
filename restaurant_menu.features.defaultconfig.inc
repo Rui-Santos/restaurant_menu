@@ -12,6 +12,7 @@ function restaurant_menu_defaultconfig_features() {
     'restaurant_menu' => array(
       'field_default_fields' => 'field_default_fields',
       'strongarm' => 'strongarm',
+      'user_default_permissions' => 'user_default_permissions',
     ),
   );
 }
@@ -816,4 +817,113 @@ function restaurant_menu_defaultconfig_strongarm() {
   $export['menu_masks'] = $strongarm;
 
   return $export;
+}
+
+/**
+ * Implements hook_defaultconfig_user_default_permissions().
+ */
+function restaurant_menu_defaultconfig_user_default_permissions() {
+  $permissions = array();
+
+  // Exported permission: 'administer menu'.
+  $permissions['administer menu'] = array(
+    'name' => 'administer menu',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'editor' => 'editor',
+    ),
+    'module' => 'menu',
+  );
+
+  // Exported permission: 'create menu content'.
+  $permissions['create menu content'] = array(
+    'name' => 'create menu content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'delete any menu content'.
+  $permissions['delete any menu content'] = array(
+    'name' => 'delete any menu content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'delete own menu content'.
+  $permissions['delete own menu content'] = array(
+    'name' => 'delete own menu content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'edit any menu content'.
+  $permissions['edit any menu content'] = array(
+    'name' => 'edit any menu content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'edit own menu content'.
+  $permissions['edit own menu content'] = array(
+    'name' => 'edit own menu content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'menu edit devel'.
+  $permissions['menu edit devel'] = array(
+    'name' => 'menu edit devel',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'menu_editor',
+  );
+
+  // Exported permission: 'menu edit main-menu'.
+  $permissions['menu edit main-menu'] = array(
+    'name' => 'menu edit main-menu',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'menu_editor',
+  );
+
+  // Exported permission: 'menu edit management'.
+  $permissions['menu edit management'] = array(
+    'name' => 'menu edit management',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'menu_editor',
+  );
+
+  // Exported permission: 'menu edit menu-footer-menu'.
+  $permissions['menu edit menu-footer-menu'] = array(
+    'name' => 'menu edit menu-footer-menu',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'menu_editor',
+  );
+
+  // Exported permission: 'menu edit navigation'.
+  $permissions['menu edit navigation'] = array(
+    'name' => 'menu edit navigation',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'menu_editor',
+  );
+
+  return $permissions;
 }

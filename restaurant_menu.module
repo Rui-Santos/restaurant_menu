@@ -17,6 +17,20 @@ function restaurant_menu_menu() {
     'file' => 'restaurant_menu.admin.inc',
   );
 
+  $items['admin/menus/categories'] = array(
+    'title' => 'Menu Categories',
+    'access arguments' => array('administer menus'),
+    'page callback' => 'restaurant_menu_menu_categories_admin',
+    'file' => 'restaurant_menu.admin.inc',
+  );
+
+  $items['admin/menus/categories/add'] = array(
+    'title' => 'Add category',
+    'page callback' => 'restaurant_menu_add_menu_category_admin',
+    'access arguments' => array('administer menus'),
+    'file' => 'restaurant_menu.admin.inc',
+  );
+
   return $items;
 }
 
@@ -25,8 +39,16 @@ function restaurant_menu_menu() {
  */
 function restaurant_menu_menu_local_tasks_alter(&$data, $router_item, $root_path) {
   // Add action link to 'admin/menus/add' on 'admin/menus' page.
-  if ($root_path == 'admin/menus') {
+  if (drupal_match_path($root_path, "admin/menus\nadmin/menus/*")) {
     $item = menu_get_item('admin/menus/add');
+    if ($item['access']) {
+      $data['actions']['output'][] = array(
+        '#theme' => 'menu_local_action',
+        '#link' => $item,
+      );
+    }
+
+    $item = menu_get_item('admin/menus/categories/add');
     if ($item['access']) {
       $data['actions']['output'][] = array(
         '#theme' => 'menu_local_action',
