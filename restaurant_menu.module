@@ -7,6 +7,20 @@
 include_once 'restaurant_menu.features.inc';
 
 /**
+ * Implements hook_menu().
+ */
+function restaurant_menu_menu() {
+  $items['admin/menus/add'] = array(
+    'title' => 'Add Menu',
+    'page callback' => 'restaurant_menu_add_menu_admin',
+    'type' => MENU_LOCAL_ACTION,
+    'file' => 'restaurant_menu.admin.inc',
+  );
+
+  return $items;
+}
+
+/**
  * Implements hook_preprocess().
  */
 function restaurant_menu_preprocess_views_view_table(&$variables) {
