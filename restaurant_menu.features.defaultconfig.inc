@@ -11,7 +11,6 @@ function restaurant_menu_defaultconfig_features() {
   return array(
     'restaurant_menu' => array(
       'field_default_fields' => 'field_default_fields',
-      'strongarm' => 'strongarm',
       'user_default_permissions' => 'user_default_permissions',
     ),
   );
@@ -726,113 +725,18 @@ function restaurant_menu_defaultconfig_field_default_fields() {
 }
 
 /**
- * Implements hook_defaultconfig_strongarm().
- */
-function restaurant_menu_defaultconfig_strongarm() {
-  $export = array();
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'menu_default_active_menus';
-  $strongarm->value = array(
-    0 => 'devel',
-    1 => 'menu-footer-menu',
-    2 => 'main-menu',
-    3 => 'management',
-    4 => 'navigation',
-    6 => 'user-menu',
-  );
-  $export['menu_default_active_menus'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'menu_expanded';
-  $strongarm->value = array(
-    0 => 'main-menu',
-  );
-  $export['menu_expanded'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'menu_masks';
-  $strongarm->value = array(
-    0 => 501,
-    1 => 496,
-    2 => 493,
-    3 => 485,
-    4 => 253,
-    5 => 250,
-    6 => 248,
-    7 => 247,
-    8 => 246,
-    9 => 245,
-    10 => 243,
-    11 => 242,
-    12 => 237,
-    13 => 127,
-    14 => 126,
-    15 => 125,
-    16 => 124,
-    17 => 123,
-    18 => 122,
-    19 => 121,
-    20 => 119,
-    21 => 118,
-    22 => 117,
-    23 => 96,
-    24 => 63,
-    25 => 62,
-    26 => 61,
-    27 => 60,
-    28 => 59,
-    29 => 58,
-    30 => 56,
-    31 => 55,
-    32 => 44,
-    33 => 31,
-    34 => 30,
-    35 => 29,
-    36 => 28,
-    37 => 27,
-    38 => 26,
-    39 => 24,
-    40 => 23,
-    41 => 21,
-    42 => 15,
-    43 => 14,
-    44 => 13,
-    45 => 11,
-    46 => 10,
-    47 => 8,
-    48 => 7,
-    49 => 6,
-    50 => 5,
-    51 => 3,
-    52 => 2,
-    53 => 1,
-  );
-  $export['menu_masks'] = $strongarm;
-
-  return $export;
-}
-
-/**
  * Implements hook_defaultconfig_user_default_permissions().
  */
 function restaurant_menu_defaultconfig_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: 'administer menu'.
-  $permissions['administer menu'] = array(
-    'name' => 'administer menu',
+  // Exported permission: 'administer menus'.
+  $permissions['administer menus'] = array(
+    'name' => 'administer menus',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
     ),
-    'module' => 'menu',
+    'module' => 'restaurant_menu',
   );
 
   // Exported permission: 'create menu content'.
