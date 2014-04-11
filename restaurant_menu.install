@@ -10,39 +10,8 @@
  */
 function restaurant_menu_install() {
   $t = get_t();
-  module_load_include('module', 'taxonomy', 'taxonomy');
-
-  // get vid for menu_categories
-  $vid = db_query("SELECT vid FROM {taxonomy_vocabulary} WHERE machine_name = 'menu_categories'")->fetchField();
-
-  // if vocabulary has not been created
-  if (!$vid) {
-    $vocabulary = array(
-      'name' => t('Menu Categories'),
-      'machine_name' => 'menu_categories',
-      'description' => $t('Use this taxonomy to organize menus.'),
-      'hierarchy' => 0,
-      'module' => 'taxonomy',
-      'weight' => 0,
-    );
-    
-    // save vocabulary
-    $vocabulary = (object) $vocabulary;
-    taxonomy_vocabulary_save($vocabulary);
-    
-    // get the vocabulary vid
-    $vid = $vocabulary->vid;
-  }
-
-  if ($vid) {
-    // create a default term
-    taxonomy_term_save((object) array(
-      'name' => $t('Uncategorized'),
-      'vid' => $vid,
-    ));
-  }
-
-  // Add shortcuts
+  
+  // Add Shortcuts.
   $shortcut_set = shortcut_set_load(SHORTCUT_DEFAULT_SET_NAME);
   $shortcut_set->links = array(
     array(
