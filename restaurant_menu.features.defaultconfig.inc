@@ -784,50 +784,5 @@ function restaurant_menu_defaultconfig_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: 'menu edit devel'.
-  $permissions['menu edit devel'] = array(
-    'name' => 'menu edit devel',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'menu_editor',
-  );
-
-  // Exported permission: 'menu edit main-menu'.
-  $permissions['menu edit main-menu'] = array(
-    'name' => 'menu edit main-menu',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'menu_editor',
-  );
-
-  // Exported permission: 'menu edit management'.
-  $permissions['menu edit management'] = array(
-    'name' => 'menu edit management',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'menu_editor',
-  );
-
-  // Exported permission: 'menu edit menu-footer-menu'.
-  $permissions['menu edit menu-footer-menu'] = array(
-    'name' => 'menu edit menu-footer-menu',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'menu_editor',
-  );
-
-  // Exported permission: 'menu edit navigation'.
-  $permissions['menu edit navigation'] = array(
-    'name' => 'menu edit navigation',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'menu_editor',
-  );
-
   return $permissions;
 }
