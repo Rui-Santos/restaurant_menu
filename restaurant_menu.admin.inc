@@ -6,6 +6,13 @@
  */
 
 /**
+ * Page callback for admin/menus/manage.
+ */
+function restaurant_menu_manage_menus_admin() {
+  return menu_execute_active_handler('admin/menus');
+}
+
+/**
  * Page callback for admin/menus/add.
  */
 function restaurant_menu_add_menu_admin() {
