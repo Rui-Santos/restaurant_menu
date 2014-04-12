@@ -448,49 +448,53 @@ function restaurant_menu_views_default_views() {
   $handler->display->display_options['title'] = 'Menus';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['pager'] = FALSE;
-  $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '4';
+  $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'list';
-  $handler->display->display_options['style_options']['class'] = 'nav nav-list';
+  $handler->display->display_options['style_plugin'] = 'semanticviews_default';
+  $handler->display->display_options['style_options']['list']['element_type'] = 'ul';
+  $handler->display->display_options['style_options']['list']['class'] = 'list-group';
+  $handler->display->display_options['style_options']['row']['element_type'] = '';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_plugin'] = 'semanticviews_fields';
+  $handler->display->display_options['row_options']['skip_blank'] = 0;
+  $handler->display->display_options['row_options']['semantic_html'] = array(
+    'tid' => array(
+      'element_type' => '',
+      'class' => '',
+    ),
+  );
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Taxonomy term: Name */
-  $handler->display->display_options['fields']['name_1']['id'] = 'name_1';
-  $handler->display->display_options['fields']['name_1']['table'] = 'taxonomy_term_data';
-  $handler->display->display_options['fields']['name_1']['field'] = 'name';
-  $handler->display->display_options['fields']['name_1']['label'] = '';
-  $handler->display->display_options['fields']['name_1']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['name_1']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['name_1']['convert_spaces'] = TRUE;
   /* Field: Taxonomy term: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'taxonomy_term_data';
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['label'] = '';
-  $handler->display->display_options['fields']['name']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['name']['alter']['text'] = '<a href="/menus#[name_1]">[name]</a>';
-  $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['name']['exclude'] = TRUE;
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
-  /* Field: Taxonomy term: Image */
-  $handler->display->display_options['fields']['field_menu_categories_image']['id'] = 'field_menu_categories_image';
-  $handler->display->display_options['fields']['field_menu_categories_image']['table'] = 'field_data_field_menu_categories_image';
-  $handler->display->display_options['fields']['field_menu_categories_image']['field'] = 'field_menu_categories_image';
-  $handler->display->display_options['fields']['field_menu_categories_image']['label'] = '';
-  $handler->display->display_options['fields']['field_menu_categories_image']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['field_menu_categories_image']['alter']['path'] = 'menus#[name_1]';
-  $handler->display->display_options['fields']['field_menu_categories_image']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_menu_categories_image']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_menu_categories_image']['settings'] = array(
-    'image_style' => 'menu_categories_thumbnail',
-    'image_link' => '',
-  );
-  $handler->display->display_options['pane_category']['name'] = 'Restaurant Menu';
+  /* Field: Taxonomy term: Term description */
+  $handler->display->display_options['fields']['description']['id'] = 'description';
+  $handler->display->display_options['fields']['description']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['description']['field'] = 'description';
+  $handler->display->display_options['fields']['description']['label'] = '';
+  $handler->display->display_options['fields']['description']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['description']['element_label_colon'] = FALSE;
+  /* Field: Taxonomy term: Term ID */
+  $handler->display->display_options['fields']['tid']['id'] = 'tid';
+  $handler->display->display_options['fields']['tid']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['tid']['field'] = 'tid';
+  $handler->display->display_options['fields']['tid']['label'] = '';
+  $handler->display->display_options['fields']['tid']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['tid']['alter']['text'] = '<h4 class="list-group-item-heading">[name]</h4>
+[description]';
+  $handler->display->display_options['fields']['tid']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['tid']['alter']['path'] = 'taxonomy/term/[tid]';
+  $handler->display->display_options['fields']['tid']['alter']['link_class'] = 'list-group-item';
+  $handler->display->display_options['fields']['tid']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['tid']['separator'] = '';
+  $handler->display->display_options['pane_category']['name'] = 'Menus';
   $handler->display->display_options['pane_category']['weight'] = '0';
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 'items_per_page';
@@ -524,7 +528,7 @@ function restaurant_menu_views_default_views() {
     ),
   );
   $handler->display->display_options['defaults']['row_options'] = FALSE;
-  $handler->display->display_options['pane_category']['name'] = 'Restaurant Menu';
+  $handler->display->display_options['pane_category']['name'] = 'Menus';
   $handler->display->display_options['pane_category']['weight'] = '0';
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 0;
@@ -556,8 +560,8 @@ function restaurant_menu_views_default_views() {
   $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['style_plugin'] = 'semanticviews_default';
-  $handler->display->display_options['style_options']['row']['class'] = 'span3';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_options']['row_class'] = 'col-md-6';
   $handler->display->display_options['row_plugin'] = 'node';
   $handler->display->display_options['row_options']['links'] = FALSE;
   /* Footer: Global: Text area */
@@ -668,7 +672,7 @@ function restaurant_menu_views_default_views() {
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
-  $handler->display->display_options['pane_category']['name'] = 'Restaurant Menu';
+  $handler->display->display_options['pane_category']['name'] = 'Menus';
   $handler->display->display_options['pane_category']['weight'] = '0';
 
   /* Display: Featured Menus */
@@ -767,7 +771,7 @@ function restaurant_menu_views_default_views() {
   $handler->display->display_options['filters']['field_menu_featured_value']['value'] = array(
     1 => '1',
   );
-  $handler->display->display_options['pane_category']['name'] = 'Restaurant Menu';
+  $handler->display->display_options['pane_category']['name'] = 'Menus';
   $handler->display->display_options['pane_category']['weight'] = '0';
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 'items_per_page';
@@ -779,6 +783,24 @@ function restaurant_menu_views_default_views() {
   $handler->display->display_options['allow']['exposed_form'] = 0;
   $handler->display->display_options['allow']['fields_override'] = 0;
   $handler->display->display_options['link_to_view'] = '0';
+
+  /* Display: Menus by category */
+  $handler = $view->new_display('panel_pane', 'Menus by category', 'menu_by_category');
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Has taxonomy term ID */
+  $handler->display->display_options['arguments']['tid']['id'] = 'tid';
+  $handler->display->display_options['arguments']['tid']['table'] = 'taxonomy_index';
+  $handler->display->display_options['arguments']['tid']['field'] = 'tid';
+  $handler->display->display_options['arguments']['tid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['tid']['default_argument_type'] = 'taxonomy_tid';
+  $handler->display->display_options['arguments']['tid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['tid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['tid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['pane_category']['name'] = 'Menus';
+  $handler->display->display_options['pane_category']['weight'] = '0';
   $export['menus'] = $view;
 
   return $export;

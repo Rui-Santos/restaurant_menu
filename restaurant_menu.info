@@ -50,7 +50,6 @@ features[field_base][] = field_menu_images
 features[field_base][] = field_menu_price
 features[field_base][] = field_menu_type
 features[field_base][] = field_menu_types
-features[field_instance][] = comment-comment_node_menu-comment_body
 features[field_instance][] = field_collection_item-field_menu_types-field_menu_price
 features[field_instance][] = field_collection_item-field_menu_types-field_menu_type
 features[field_instance][] = node-menu-body

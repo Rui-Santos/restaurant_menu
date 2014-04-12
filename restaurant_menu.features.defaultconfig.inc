@@ -22,68 +22,6 @@ function restaurant_menu_defaultconfig_features() {
 function restaurant_menu_defaultconfig_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'comment-comment_node_menu-comment_body'.
-  $fields['comment-comment_node_menu-comment_body'] = array(
-    'field_config' => array(
-      'active' => 1,
-      'cardinality' => 1,
-      'deleted' => 0,
-      'entity_types' => array(
-        0 => 'comment',
-      ),
-      'field_name' => 'comment_body',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'locked' => 0,
-      'module' => 'text',
-      'settings' => array(),
-      'translatable' => 0,
-      'type' => 'text_long',
-    ),
-    'field_instance' => array(
-      'bundle' => 'comment_node_menu',
-      'default_value' => NULL,
-      'deleted' => 0,
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'hidden',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'comment',
-      'field_name' => 'comment_body',
-      'label' => 'Comment',
-      'required' => TRUE,
-      'settings' => array(
-        'text_processing' => 1,
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'module' => 'text',
-        'settings' => array(
-          'rows' => 5,
-        ),
-        'type' => 'text_textarea',
-        'weight' => 0,
-      ),
-    ),
-  );
-
   // Exported field: 'field_collection_item-field_menu_types-field_menu_price'.
   $fields['field_collection_item-field_menu_types-field_menu_price'] = array(
     'field_config' => array(
@@ -711,7 +649,6 @@ function restaurant_menu_defaultconfig_field_default_fields() {
   // Included for use with string extractors like potx.
   t('A menu can have different types. Eg. a regular and large type at different prices.');
   t('Categories');
-  t('Comment');
   t('Description');
   t('Featured');
   t('Image');
