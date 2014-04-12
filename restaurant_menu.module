@@ -11,17 +11,19 @@ include_once 'restaurant_menu.features.inc';
  */
 function restaurant_menu_menu() {
 
-  $items['admin/menus/manage'] = array(
-    'title' => 'Manage menus',
-    'page callback' => 'restaurant_menu_manage_menus_admin',
+  $items['admin/menus/add'] = array(
+    'title' => 'Add menu',
+    'weight' => 10,
+    'page callback' => 'restaurant_menu_add_menu_admin',
     'access arguments' => array('administer menus'),
     'file' => 'restaurant_menu.admin.inc',
     'type' => MENU_LOCAL_TASK,
   );
 
-  $items['admin/menus/add'] = array(
-    'title' => 'Add menu',
-    'page callback' => 'restaurant_menu_add_menu_admin',
+  $items['admin/menus/manage'] = array(
+    'title' => 'Manage menus',
+    'weight' => 20,
+    'page callback' => 'restaurant_menu_manage_menus_admin',
     'access arguments' => array('administer menus'),
     'file' => 'restaurant_menu.admin.inc',
     'type' => MENU_LOCAL_TASK,
@@ -29,6 +31,7 @@ function restaurant_menu_menu() {
 
   $items['admin/menus/categories'] = array(
     'title' => 'Menu categories',
+    'weight' => 30,
     'access arguments' => array('administer menus'),
     'page callback' => 'restaurant_menu_menu_categories_admin',
     'file' => 'restaurant_menu.admin.inc',
