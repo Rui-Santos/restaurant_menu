@@ -63,11 +63,30 @@ class RestaurantMenuMigrateMenuMigration extends Migration {
 
   function csvcolumns() {
     // "Title", "Body", "Categories", "Images"
-    $columns[0] = array('title', 'Title');
-    $columns[1] = array('body', 'Body');
-    $columns[2] = array('categories', 'Categories');
-    $columns[3] = array('images', 'Images');
-    $columns[4] = array('featured', 'Featured');
+    $columns[] = array('title', 'Title');
+    $columns[] = array('body', 'Body');
+    $columns[] = array('categories', 'Categories');
+    $columns[] = array('images', 'Images');
+    $columns[] = array('featured', 'Featured');
+    $columns[] = array('types', 'Types');
     return $columns;
+  }
+
+  public function complete($node, stdClass $row) {
+    // Create field collections.
+    if (isset($row->types)) {
+      $types = explode(",", $row->types);
+      foreach ($types as $type) {
+        $chunk = explode(":", trim($type));
+        $type = $chunk[0];
+        $price = $chunk[1];
+
+        $field_collection_item = entity_create('field_collection_item', array('field_name' => 'field_menu_types'));
+        $field_collection_item->setHostEntity('node', $node);
+        $field_collection_item->field_menu_type[LANGUAGE_NONE][] = array('value' => $type);
+        $field_collection_item->field_menu_price[LANGUAGE_NONE][] = array('value' => $price);
+        $field_collection_item->save();
+      }
+    }
   }
 }
