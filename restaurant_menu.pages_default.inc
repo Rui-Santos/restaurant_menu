@@ -24,7 +24,7 @@ function restaurant_menu_default_page_manager_pages() {
     'type' => 'normal',
     'title' => 'Menus',
     'name' => 'main-menu',
-    'weight' => '1',
+    'weight' => '-9',
     'parent' => array(
       'type' => 'none',
       'title' => '',
